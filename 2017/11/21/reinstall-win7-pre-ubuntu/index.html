@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="手邊的筆電是七年前購買的 Toshiba L640。硬體設備十分老舊，年久失修，不太夠用，準備要淘汰了。但卻因為選擇障礙、猶豫不決，一直沒有出手買新筆電。 趁著最近比較有空，不如把舊筆電整理一下，想試試看雙系統灌Ubuntu，也順便把原本的win7重灌。 因為找不到光碟片，重灌、啟用windows處處卡關，最後暫時先放">
+<meta property="og:type" content="article">
+<meta property="og:title" content="重灌Win7＆安裝Ubuntu前的準備">
+<meta property="og:url" content="http://yoursite.com/2017/11/21/reinstall-win7-pre-ubuntu/index.html">
+<meta property="og:site_name" content="olycats&#39; blog">
+<meta property="og:description" content="手邊的筆電是七年前購買的 Toshiba L640。硬體設備十分老舊，年久失修，不太夠用，準備要淘汰了。但卻因為選擇障礙、猶豫不決，一直沒有出手買新筆電。 趁著最近比較有空，不如把舊筆電整理一下，想試試看雙系統灌Ubuntu，也順便把原本的win7重灌。 因為找不到光碟片，重灌、啟用windows處處卡關，最後暫時先放棄，把磁區整理好，準備灌Ubuntu。 紀錄一下過程中遇到的困難及解決方法。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2017-11-22T18:59:44.634Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="重灌Win7＆安裝Ubuntu前的準備">
+<meta name="twitter:description" content="手邊的筆電是七年前購買的 Toshiba L640。硬體設備十分老舊，年久失修，不太夠用，準備要淘汰了。但卻因為選擇障礙、猶豫不決，一直沒有出手買新筆電。 趁著最近比較有空，不如把舊筆電整理一下，想試試看雙系統灌Ubuntu，也順便把原本的win7重灌。 因為找不到光碟片，重灌、啟用windows處處卡關，最後暫時先放棄，把磁區整理好，準備灌Ubuntu。 紀錄一下過程中遇到的困難及解決方法。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '作者'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/21/reinstall-win7-pre-ubuntu/"/>
+
+
+
+
+
+  <title>重灌Win7＆安裝Ubuntu前的準備 | olycats' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">olycats' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            所有分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            所有文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/reinstall-win7-pre-ubuntu/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="olycats">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="olycats' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">重灌Win7＆安裝Ubuntu前的準備</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="新增於" itemprop="dateCreated datePublished" datetime="2017-11-21T19:48:55+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/筆記/" itemprop="url" rel="index">
+                    <span itemprop="name">筆記</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/筆記/Ubuntu新手筆記/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu新手筆記</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>手邊的筆電是七年前購買的 Toshiba L640。<br>硬體設備十分老舊，年久失修，不太夠用，準備要淘汰了。<br>但卻因為選擇障礙、猶豫不決，一直沒有出手買新筆電。</p>
+<p>趁著最近比較有空，不如把舊筆電整理一下，<br>想試試看雙系統灌Ubuntu，也順便把原本的win7重灌。</p>
+<p>因為找不到光碟片，重灌、啟用windows處處卡關，<br>最後暫時先放棄，把磁區整理好，準備灌Ubuntu。</p>
+<p>紀錄一下過程中遇到的困難及解決方法。<br><a id="more"></a></p>
+<h2 id="重灌windows-7"><a href="#重灌windows-7" class="headerlink" title="重灌windows 7"></a>重灌windows 7</h2><h3 id="方法1–-使用原廠還原光碟"><a href="#方法1–-使用原廠還原光碟" class="headerlink" title="方法1– 使用原廠還原光碟"></a>方法1– 使用原廠還原光碟</h3><p>使用還原光碟應該是最標準、最建議的作法了，但是我找不到光碟… </p>
+<h3 id="方法2–-系統內建「一鍵還原」"><a href="#方法2–-系統內建「一鍵還原」" class="headerlink" title="方法2– 系統內建「一鍵還原」"></a>方法2– 系統內建「<strong>一鍵還原</strong>」</h3><p>查了一下，發現不用還原光碟，也可以使用內建的還原系統，重灌windows。<br>Toshiba的還原鍵是[0]。<br>但嘗試過按電源鍵前開始按、看到Toshiba Logo時才開始按、長按、連續按…<br>試了各種方法都按不出來。<br>希望落空。</p>
+<blockquote>
+<p>參考資料： </p>
+<ul>
+<li><a href="https://mrtang.tw/blog/post/31901145" target="_blank" rel="noopener">輕鬆使用還原鍵，來重灌各廠牌電腦(筆電/桌機)的Windows作業系統</a></li>
+<li><a href="http://kato3c.pixnet.net/blog/post/283103387" target="_blank" rel="noopener">藤小二筆電知識-各家筆電還原鍵    (1030916修改)</a></li>
+</ul>
+</blockquote>
+<h3 id="方法3–-製作USB開機隨身碟"><a href="#方法3–-製作USB開機隨身碟" class="headerlink" title="方法3– 製作USB開機隨身碟"></a>方法3– 製作USB開機隨身碟</h3><p>先下載win7的映像檔，就可以用<br>Windows USB/DVD Download Tool ，製作USB開機碟。</p>
+<blockquote>
+<p>參考資料： </p>
+<ul>
+<li><a href="https://briian.com/6658/" target="_blank" rel="noopener">用「USB隨身碟」安裝、重灌 Windows ，速度大提昇！</a> </li>
+</ul>
+</blockquote>
+<h4 id="製作USB開機隨身碟"><a href="#製作USB開機隨身碟" class="headerlink" title="製作USB開機隨身碟"></a>製作USB開機隨身碟</h4><h5 id="卡關–-win7-映像檔，無法由微軟官網取得"><a href="#卡關–-win7-映像檔，無法由微軟官網取得" class="headerlink" title="卡關– win7 映像檔，無法由微軟官網取得"></a>卡關– win7 映像檔，無法由微軟官網取得</h5><p>官網有提供連結，輸入產品金鑰後就可以下載映像檔。<br>但輸入筆電授權貼紙的Product Key，卻顯示錯誤：</p>
+<blockquote>
+<p>您輸入的產品金鑰似乎屬於由裝置製造商預先安裝的軟體。<br>請連絡裝置製造商以取得修復軟體選項。</p>
+<p>官網下載連結：<br><a href="https://www.microsoft.com/zh-tw/software-download/windows7" target="_blank" rel="noopener">下載 Windows 7 光碟映像 (ISO 檔案)</a>  </p>
+</blockquote>
+<h5 id="解決方法–-改用Microsoft-Windows-and-Office-ISO-Download-Tool下載映像檔"><a href="#解決方法–-改用Microsoft-Windows-and-Office-ISO-Download-Tool下載映像檔" class="headerlink" title="解決方法– 改用Microsoft Windows and Office ISO Download Tool下載映像檔"></a>解決方法– 改用Microsoft Windows and Office ISO Download Tool下載映像檔</h5><p>先下載Microsoft Windows and Office ISO Download Tool，<br>這個工具不用輸入產品金鑰，就能下載映像檔。</p>
+<blockquote>
+<p>參考：<br><a href="https://www.ptt.cc/bbs/Notebook/M.1465043372.A.957.html" target="_blank" rel="noopener">[問題] 筆電序號無法至windows官網下載ISO?</a><br>（一樓的推文=&gt;）<br><a href="https://free.com.tw/download-windows-7-and-8-1-and-10-iso-from-microsoft/" target="_blank" rel="noopener">從 Microsoft 官方網站免費下載 Windows 7、8.1 及 10 中文光碟映像檔（ISO）教學</a><br>（再連結到=&gt;）<br><a href="https://free.com.tw/windows-and-office-iso-downloader/" target="_blank" rel="noopener">Windows and Office ISO Downloader 從微軟官方網站免費下載 Windows、Office 安裝程式</a></p>
+</blockquote>
+<p>下載完成後，使用映像檔製作開機隨身碟、再用選擇USB開機，<br>就能順利進入系統還原，沒有遇到什麼困難。<br>直到系統還原的步驟接近尾聲…又卡關了！！</p>
+<h5 id="再次卡關–-無法啟用windows"><a href="#再次卡關–-無法啟用windows" class="headerlink" title="再次卡關– 無法啟用windows"></a>再次卡關– 無法啟用windows</h5><p>輸入產品金鑰顯示錯誤訊息</p>
+<blockquote>
+<p>Product Key Doesn’t Match the Current SKU」<br>（當下未紀錄此錯誤訊息，不確定中文完整的句子）</p>
+</blockquote>
+<p>進入window之後，輸入產品金鑰仍然無法啟用。<br>撥打微軟的語音專線，系統要我輸入產品識別碼，但不知道為什麼一直輸入錯誤。<br>剩下只能改天上班時間再次撥打，轉客服處理了。</p>
+<p>這次主要是想要摸索Ubuntu，所以win7無法啟用的問題，也暫時不想管了。</p>
+<p>另外也紀錄一下，作為開機碟的USB隨身碟，已使用的容量是2.6GB，<br>剛重灌Win7，系統槽已使用的容量是9.16GB。</p>
+<h2 id="安裝Ubuntu前的準備–磁碟管理"><a href="#安裝Ubuntu前的準備–磁碟管理" class="headerlink" title="安裝Ubuntu前的準備–磁碟管理"></a>安裝Ubuntu前的準備–磁碟管理</h2><p>在重灌的時候，已經把原本的磁區全部刪除，重頭來過。<br>分配C槽120GB、D槽250GB，剩下90GB左右未配置的磁區，留給Ubuntu使用。</p>
+<p>在Ubuntu可以讀取在Windows的檔案，但是不會顯示磁碟代號（C槽、D槽）。<br>所以我在windows設定磁碟標籤為WIN7(C:)、Data(D:)。<br>如此一來在Ubuntu就會顯示路徑為/media/olycats/WIN7、/media/olycats/Data。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/blog-soft-opening/" rel="next" title="blog試營運">
+                <i class="fa fa-chevron-left"></i> blog試營運
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/21/unbuntu-installation/" rel="prev" title="Ubuntu安裝、基本設定">
+                Ubuntu安裝、基本設定 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            網站導覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">olycats</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#重灌windows-7"><span class="nav-text">重灌windows 7</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#方法1–-使用原廠還原光碟"><span class="nav-text">方法1– 使用原廠還原光碟</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法2–-系統內建「一鍵還原」"><span class="nav-text">方法2– 系統內建「一鍵還原」</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#方法3–-製作USB開機隨身碟"><span class="nav-text">方法3– 製作USB開機隨身碟</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#製作USB開機隨身碟"><span class="nav-text">製作USB開機隨身碟</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#卡關–-win7-映像檔，無法由微軟官網取得"><span class="nav-text">卡關– win7 映像檔，無法由微軟官網取得</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#解決方法–-改用Microsoft-Windows-and-Office-ISO-Download-Tool下載映像檔"><span class="nav-text">解決方法– 改用Microsoft Windows and Office ISO Download Tool下載映像檔</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#再次卡關–-無法啟用windows"><span class="nav-text">再次卡關– 無法啟用windows</span></a></li></ol></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝Ubuntu前的準備–磁碟管理"><span class="nav-text">安裝Ubuntu前的準備–磁碟管理</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">olycats</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

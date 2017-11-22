@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="第一次安裝Ubuntu，事先沒有做太多功課，隨意摸索，遇到問題才去找解答。以此篇紀錄一下步驟、以及過程中遇到的困難。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu安裝、基本設定">
+<meta property="og:url" content="http://yoursite.com/2017/11/21/unbuntu-installation/index.html">
+<meta property="og:site_name" content="olycats&#39; blog">
+<meta property="og:description" content="第一次安裝Ubuntu，事先沒有做太多功課，隨意摸索，遇到問題才去找解答。以此篇紀錄一下步驟、以及過程中遇到的困難。">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2017-11-22T18:59:07.721Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu安裝、基本設定">
+<meta name="twitter:description" content="第一次安裝Ubuntu，事先沒有做太多功課，隨意摸索，遇到問題才去找解答。以此篇紀錄一下步驟、以及過程中遇到的困難。">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '作者'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/21/unbuntu-installation/"/>
+
+
+
+
+
+  <title>Ubuntu安裝、基本設定 | olycats' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">olycats' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            所有分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            所有文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/21/unbuntu-installation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="olycats">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="olycats' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu安裝、基本設定</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="新增於" itemprop="dateCreated datePublished" datetime="2017-11-21T20:10:55+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/筆記/" itemprop="url" rel="index">
+                    <span itemprop="name">筆記</span>
+                  </a>
+                </span>
+
+                
+                
+                  ， 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/筆記/Ubuntu新手筆記/" itemprop="url" rel="index">
+                    <span itemprop="name">Ubuntu新手筆記</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>第一次安裝Ubuntu，<br>事先沒有做太多功課，隨意摸索，遇到問題才去找解答。<br>以此篇紀錄一下步驟、以及過程中遇到的困難。<br><a id="more"></a></p>
+<h2 id="安裝Ubuntu"><a href="#安裝Ubuntu" class="headerlink" title="安裝Ubuntu"></a>安裝Ubuntu</h2><ol>
+<li><p>下載Ubuntu桌面版本 - 16.04 LTS - 64 位元版本，下載的是.iso光碟映像檔。</p>
+</li>
+<li><p>下載、執行UNetbootin。<br> 有兩個選項「發行版」、「映像檔」。<br> 選擇「映像檔」，路徑選擇第一步下載的映像檔，<br> 再選擇要使用的USB隨身碟，再按確定即可。<br> ＊如果沒有先下載映像檔，在這裡也可以點選「發行版」，<br>   會自動下載對應的映像檔。</p>
+</li>
+<li><p>重開機、使用USB開機，接下來就跟著指示安裝Ubuntu即可。</p>
+</li>
+<li><p>本電腦目前安裝有多套作業系統，請問要怎麼處理？<br> 「將Ubuntu與他們安裝在一起」、「清除磁碟並安裝Ubuntu」<br> 因為要灌雙系統所以選擇第一個「將Ubuntu與他們安裝在一起」</p>
+</li>
+<li><p>第一次安裝時我選擇中文，但覺得中文化不算那麼完整，<br> 正式安裝時改選English(US)。</p>
+</li>
+<li><p>製作Live USB的隨身碟已使用的容量是1.6GB。<br> 安裝Ubuntu的磁區，安裝完已使用的容量是3.8GB。</p>
+</li>
+</ol>
+<blockquote>
+<p>Ubuntu下載：<a href="https://www.ubuntu-tw.org/modules/tinyd0/" target="_blank" rel="noopener">下載Ubuntu | Ubuntu 正體中文站</a><br>UNetbootin：<a href="https://unetbootin.github.io/" target="_blank" rel="noopener">UNetbootin - Homepage and Downloads</a><br>參考：<a href="http://blog.xuite.net/yh96301/blog/57645340" target="_blank" rel="noopener">Ubuntu 16.04製作Live USB隨身碟的軟體Unetbootin</a></p>
+</blockquote>
+<h2 id="Ubuntu安裝的重要設定"><a href="#Ubuntu安裝的重要設定" class="headerlink" title="Ubuntu安裝的重要設定"></a>Ubuntu安裝的重要設定</h2><h3 id="網路測通"><a href="#網路測通" class="headerlink" title="網路測通"></a>網路測通</h3><p>目前是使用中華電信的有線網路，需要登入使用者名稱、密碼。</p>
+<ol>
+<li><p>新增連線<br> 編輯連線-&gt;新增-&gt;選「DSL」-&gt;自訂連線名稱-&gt;輸入使用者名稱、密碼。<br> 第一個標籤（General）勾選「自動連線」</p>
+</li>
+<li><p>開啟內建瀏覽器firefox<br> 測試看看是否網路有通。</p>
+</li>
+<li><p>測試 (<a href="https://tw.yahoo.com/" target="_blank" rel="noopener">https://tw.yahoo.com/</a>)<br> 測試看看會不會跑很久、等好幾分鐘網頁都跑不出來。<br> 剛好在PTT看到這個問題，解決方法是輸入指令</p>
+ <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo pppoeconf</span><br></pre></td></tr></table></figure>
+<p>依照指示操作完成後，測試網頁可以正常開啟（30秒內）</p>
+</li>
+</ol>
+<blockquote>
+<p>參考：<br><a href="https://www.ptt.cc/bbs/Linux/M.1499242463.A.249.html" target="_blank" rel="noopener">[問題] Ubuntu 16.04瀏覽某些網頁速度超慢- 看板Linux - 批踢踢實業坊</a><br><a href="https://www.ptt.cc/bbs/Linux/M.1501682884.A.DA4.html" target="_blank" rel="noopener">Re: [問題] Ubuntu 16.04瀏覽某些網頁速度超慢- 看板Linux - 批踢踢實業坊</a></p>
+</blockquote>
+<h3 id="設定新酷音輸入法"><a href="#設定新酷音輸入法" class="headerlink" title="設定新酷音輸入法"></a>設定新酷音輸入法</h3><p>System Settings -&gt; Language Support -&gt;<br>Install / Remove Languages -&gt; 勾選Chinese (traditional)</p>
+<p>Keyboard input method system 選擇fcitx</p>
+<p>此時可能需要重開Ubuntu</p>
+<p>在輸入法那邊，點選「ConfigureFcitx」，新增「Chewing」<br>即完成新增新酷音輸入法。</p>
+<p>覺得跟微軟的新注音操作不太一樣，目前不太順手，還在適應中。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/21/reinstall-win7-pre-ubuntu/" rel="next" title="重灌Win7＆安裝Ubuntu前的準備">
+                <i class="fa fa-chevron-left"></i> 重灌Win7＆安裝Ubuntu前的準備
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/11/21/ubuntu-win7-dual-boot/" rel="prev" title="Ubuntu/Windows7雙系統">
+                Ubuntu/Windows7雙系統 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            網站導覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">olycats</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝Ubuntu"><span class="nav-text">安裝Ubuntu</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Ubuntu安裝的重要設定"><span class="nav-text">Ubuntu安裝的重要設定</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#網路測通"><span class="nav-text">網路測通</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定新酷音輸入法"><span class="nav-text">設定新酷音輸入法</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">olycats</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

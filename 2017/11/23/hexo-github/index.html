@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-tw">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="在Github Pages使用hexo建立blog">
+<meta property="og:type" content="article">
+<meta property="og:title" content="hexo on Github pages">
+<meta property="og:url" content="http://yoursite.com/2017/11/23/hexo-github/index.html">
+<meta property="og:site_name" content="olycats&#39; blog">
+<meta property="og:description" content="在Github Pages使用hexo建立blog">
+<meta property="og:locale" content="zh-tw">
+<meta property="og:updated_time" content="2017-11-23T07:55:22.395Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="hexo on Github pages">
+<meta name="twitter:description" content="在Github Pages使用hexo建立blog">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '作者'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/11/23/hexo-github/"/>
+
+
+
+
+
+  <title>hexo on Github pages | olycats' blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-tw">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">olycats' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首頁
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            關於
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            所有分類
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            所有文章
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/11/23/hexo-github/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="olycats">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="olycats' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">hexo on Github pages</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">發表於</span>
+              
+              <time title="新增於" itemprop="dateCreated datePublished" datetime="2017-11-23T15:52:30+08:00">
+                2017-11-23
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分類於</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/筆記/" itemprop="url" rel="index">
+                    <span itemprop="name">筆記</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>在Github Pages使用hexo建立blog<br><a id="more"></a></p>
+<blockquote>
+<p>hexo官方文件：<br><a href="https://hexo.io/zh-tw/docs/" target="_blank" rel="noopener">文件 | Hexo</a></p>
+<p>參考教學：<br><a href="http://lodur46.blogspot.tw/2016/04/hexo-github.html" target="_blank" rel="noopener">使用 Hexo + Github 建立個人網誌 </a><br><a href="https://sean.life/2016/09/16/Create-a-personl-blog-website/" target="_blank" rel="noopener">建立個人部落格 </a><br><a href="https://wwssllabcd.github.io/blog/2014/12/22/how-to-install-hexo/" target="_blank" rel="noopener">Hexo 安裝教學、心得筆記 | printf(“ I’m EricWang “)</a></p>
+</blockquote>
+<h2 id="安裝"><a href="#安裝" class="headerlink" title="安裝"></a>安裝</h2><h3 id="安裝git"><a href="#安裝git" class="headerlink" title="安裝git"></a>安裝git</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git-core</span><br></pre></td></tr></table></figure>
+<h3 id="安裝-Node-js"><a href="#安裝-Node-js" class="headerlink" title="安裝 Node.js"></a>安裝 Node.js</h3><p>先安裝nvm(Node Version Manager)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.2/install.sh | bash</span><br></pre></td></tr></table></figure></p>
+<p>重啟終端機後執行<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nvm install stable</span><br></pre></td></tr></table></figure></p>
+<h3 id="安裝hexo"><a href="#安裝hexo" class="headerlink" title="安裝hexo"></a>安裝hexo</h3><p>git、Node.js都安裝完畢後，即可透過 npm 安裝 Hexo</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+<h2 id="建立Hexo"><a href="#建立Hexo" class="headerlink" title="建立Hexo"></a>建立Hexo</h2><p>Hexo 會在指定資料夾中建立所有需要的檔案。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">hexo init &lt;folder&gt;</span><br><span class="line">cd &lt;folder&gt;</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
+<h2 id="建立Github-Pages"><a href="#建立Github-Pages" class="headerlink" title="建立Github Pages"></a>建立Github Pages</h2><p><a href="https://pages.github.com/" target="_blank" rel="noopener">Github Pages官方教學</a><br>如果要使用hexo，只要做第一步「Create a repository」<br>建立一個repository，命名為「<username>.github.io」<br>就可以我的建立Github Page，網址「https://<username>.github.io」</username></username></p>
+<h2 id="hexo-配置"><a href="#hexo-配置" class="headerlink" title="hexo 配置"></a>hexo 配置</h2><p>要調整~\hexo_config.yml這個檔案的內容</p>
+<p>如果要deploy到Github，以下這裡一定要設定</p>
+<blockquote>
+<p>deploy:<br> type: git<br> repo: git@github.com:olycats/olycats.github.io.git</p>
+</blockquote>
+<h2 id="hexo-佈署"><a href="#hexo-佈署" class="headerlink" title="hexo 佈署"></a>hexo 佈署</h2><h3 id="安裝Git插件"><a href="#安裝Git插件" class="headerlink" title="安裝Git插件"></a>安裝Git插件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<h3 id="設定ssh"><a href="#設定ssh" class="headerlink" title="設定ssh"></a>設定ssh</h3><p>因為第一次無法成功deploy，設定ssh後才能成功。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">mkdir ~/.ssh</span><br><span class="line">cd ~/.ssh</span><br><span class="line">ssh-keygen -t rsa -C &quot;your_email@example.com&quot;</span><br></pre></td></tr></table></figure>
+<p>一路enter<br>找到~/.ssh/id_rsa.pub這個檔案，複製裡面內容<br>貼到 <a href="https://github.com/settings/keys" target="_blank" rel="noopener">https://github.com/settings/keys</a></p>
+<p>設定<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourusername&quot;</span><br><span class="line">git config --global user.email &quot;your_email@example.com</span><br></pre></td></tr></table></figure></p>
+<h2 id="hexo基本指令"><a href="#hexo基本指令" class="headerlink" title="hexo基本指令"></a>hexo基本指令</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd ~/hexo</span><br></pre></td></tr></table></figure>
+<p>新增文章(layout： post、page、draft)<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<p>將草稿發布<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo publish [layout] &lt;title&gt;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">hexo g # 產生 blog</span><br><span class="line">hexo s # 讓 blog 可以在 local 端檢視</span><br><span class="line">hexo s --draft # 含草稿</span><br><span class="line">hexo d # 佈署</span><br><span class="line">hexo clean</span><br></pre></td></tr></table></figure>
+<h2 id="Github-刪除多餘的commit紀錄"><a href="#Github-刪除多餘的commit紀錄" class="headerlink" title="Github - 刪除多餘的commit紀錄"></a>Github - 刪除多餘的commit紀錄</h2><blockquote>
+<p>參考：<br><a href="http://itspg.github.io/blog/2013/01/13/git-squash-master-commits/" target="_blank" rel="noopener">將github上的多筆commits合併成為一條commit</a><br><a href="http://fosshelp.blogspot.tw/2015/05/how-to-github-delete-commit.html" target="_blank" rel="noopener">fosshelp: How To GitHub delete a commit</a></p>
+</blockquote>
+<p>因為是使用hexo，所以目錄要移動到hexo底下的git目錄，以下是我實際操作的步驟。</p>
+<p>先cd到hexo底下的git目錄<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~/hexo/.deploy_git</span><br><span class="line">git log</span><br></pre></td></tr></table></figure></p>
+<p>git log 查出來的結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">commit af69ef2ccae4e83fd57afbd4cc6b65002ee6ebec</span><br><span class="line"></span><br><span class="line">​    Site updated: 2017-11-21 00:06:14</span><br><span class="line"></span><br><span class="line">commit b5b379e950729bd54d0b1c18122a0b2a83d39df9</span><br><span class="line"></span><br><span class="line">​    First commit</span><br></pre></td></tr></table></figure></p>
+<p>將Head退回到First commit，再重新deploy<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line">git reset --hard b5b379e950729bd54d0b1c18122a0b2a83d39df9</span><br><span class="line">cd ~/hexo/</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure></p>
+<h2 id="套用主題"><a href="#套用主題" class="headerlink" title="套用主題"></a>套用主題</h2><blockquote>
+<p><a href="https://hexo.io/themes/" target="_blank" rel="noopener">Themes | Hexo</a></p>
+</blockquote>
+<h2 id="Markdown"><a href="#Markdown" class="headerlink" title="Markdown"></a>Markdown</h2><h3 id="Markdown中文介紹"><a href="#Markdown中文介紹" class="headerlink" title="Markdown中文介紹"></a>Markdown中文介紹</h3><blockquote>
+<p><a href="http://markdown.tw/" target="_blank" rel="noopener">Markdown 文件</a></p>
+</blockquote>
+<h3 id="markdown-editor-typora"><a href="#markdown-editor-typora" class="headerlink" title="markdown editor - typora"></a>markdown editor - typora</h3><blockquote>
+<p><a href="https://typora.io/" target="_blank" rel="noopener">Typora — a minimal markdown editor, markdown reader.</a><br><a href="https://typora.io/#linux" target="_blank" rel="noopener">Install Typora on Linux</a></p>
+</blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">\# optional, but recommended</span><br><span class="line">sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys BA300B7755AFCFAE</span><br><span class="line">\# add Typora&apos;s repository</span><br><span class="line">sudo add-apt-repository &apos;deb http://typora.io linux/&apos;</span><br><span class="line">sudo apt-get update</span><br><span class="line">\# install typora</span><br><span class="line">sudo apt-get install typora</span><br></pre></td></tr></table></figure>
+<h3 id="markdown-editor-stackedit"><a href="#markdown-editor-stackedit" class="headerlink" title="markdown editor - stackedit"></a>markdown editor - stackedit</h3><blockquote>
+<p><a href="https://stackedit.io/" target="_blank" rel="noopener">StackEdit – In-browser markdown editor</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/11/22/ubuntu-r/" rel="next" title="Ubuntu-R語言">
+                <i class="fa fa-chevron-left"></i> Ubuntu-R語言
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目錄
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            網站導覽
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">olycats</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">8</span>
+                  <span class="site-state-item-name">文章</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">3</span>
+                  <span class="site-state-item-name">分類</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#安裝"><span class="nav-text">安裝</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝git"><span class="nav-text">安裝git</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝-Node-js"><span class="nav-text">安裝 Node.js</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝hexo"><span class="nav-text">安裝hexo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立Hexo"><span class="nav-text">建立Hexo</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#建立Github-Pages"><span class="nav-text">建立Github Pages</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-配置"><span class="nav-text">hexo 配置</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo-佈署"><span class="nav-text">hexo 佈署</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安裝Git插件"><span class="nav-text">安裝Git插件</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#設定ssh"><span class="nav-text">設定ssh</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#hexo基本指令"><span class="nav-text">hexo基本指令</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Github-刪除多餘的commit紀錄"><span class="nav-text">Github - 刪除多餘的commit紀錄</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#套用主題"><span class="nav-text">套用主題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown"><span class="nav-text">Markdown</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Markdown中文介紹"><span class="nav-text">Markdown中文介紹</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown-editor-typora"><span class="nav-text">markdown editor - typora</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#markdown-editor-stackedit"><span class="nav-text">markdown editor - stackedit</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2017</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">olycats</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主題 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

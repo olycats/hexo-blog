@@ -1,0 +1,767 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="之前因為工作的關係，需要常常打電話給康是美門市。 為了能方便使用，我寫了一支小程式，能夠從康是美官方網站抓取全門市列表，存成CSV檔。再利用MS Excel內建的VBA，將資料作整理、排序、套用格式…等。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="我的第一支爬蟲程式-康是美門市列表">
+<meta property="og:url" content="http://yoursite.com/crawler-for-cosmed-store-list/index.html">
+<meta property="og:site_name" content="olycats&#39; blog">
+<meta property="og:description" content="之前因為工作的關係，需要常常打電話給康是美門市。 為了能方便使用，我寫了一支小程式，能夠從康是美官方網站抓取全門市列表，存成CSV檔。再利用MS Excel內建的VBA，將資料作整理、排序、套用格式…等。">
+<meta property="og:locale" content="en">
+<meta property="og:image" content="http://yoursite.com/crawler-for-cosmed-store-list/Contact_Shop.png">
+<meta property="og:image" content="http://yoursite.com/crawler-for-cosmed-store-list/Contact_Shop_list.png">
+<meta property="og:image" content="http://yoursite.com/crawler-for-cosmed-store-list/Contact_Shop_list_67.png">
+<meta property="og:image" content="http://yoursite.com/crawler-for-cosmed-store-list/Contact_Shop_list_last.png">
+<meta property="og:updated_time" content="2018-01-23T19:31:28.755Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="我的第一支爬蟲程式-康是美門市列表">
+<meta name="twitter:description" content="之前因為工作的關係，需要常常打電話給康是美門市。 為了能方便使用，我寫了一支小程式，能夠從康是美官方網站抓取全門市列表，存成CSV檔。再利用MS Excel內建的VBA，將資料作整理、排序、套用格式…等。">
+<meta name="twitter:image" content="http://yoursite.com/crawler-for-cosmed-store-list/Contact_Shop.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/crawler-for-cosmed-store-list/"/>
+
+
+
+
+
+  <title>我的第一支爬蟲程式-康是美門市列表 | olycats' blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-110628235-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">olycats' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/crawler-for-cosmed-store-list/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="olycats">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="olycats' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">我的第一支爬蟲程式-康是美門市列表</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-01-12T03:33:58+08:00">
+                2018-01-12
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-01-24T03:31:28+08:00">
+                2018-01-24
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/GitHub/" itemprop="url" rel="index">
+                    <span itemprop="name">GitHub</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>之前因為工作的關係，需要常常打電話給康是美門市。</p>
+<p>為了能方便使用，我寫了一支小程式，能夠從康是美官方網站抓取全門市列表，存成CSV檔。<br>再利用MS Excel內建的VBA，將資料作整理、排序、套用格式…等。</p>
+<a id="more"></a>
+<h2 id="歷程"><a href="#歷程" class="headerlink" title="歷程"></a>歷程</h2><p>前前後後試了至少五種版本，現在已經離職了所以已經用不到，當作練習而已。</p>
+<h3 id="VBA"><a href="#VBA" class="headerlink" title="VBA"></a>VBA</h3><p>想抓取康是美門市列表，用Excel VBA就可以達成，這也是我一開始的作法。<br>優點：只要電腦有安裝Excel就可以使用VBA。且把網頁資料匯入到Excel不用自己解析html。<br>缺點：覺得整理資料的方法比較不穩健，且效能上遇到一些問題，一直無法解開。</p>
+<h3 id="R-xml2"><a href="#R-xml2" class="headerlink" title="R - xml2"></a>R - xml2</h3><p>後來學了R語言之後，就改用R語言做做看。<br>第一版是用xml2套件，用xpath的方式。<br>優點：解析網頁的方法比用VBA好多了，重點是能解決效能的問題。<br>缺點：需要安裝R的環境。<br>R的環境其實很好架，但就無法直接在別的電腦執行，且程式無法直接打包成執行檔。<br>還有我不習慣R的程式碼，寫得很亂，自己不滿意。</p>
+<h3 id="R-rvest"><a href="#R-rvest" class="headerlink" title="R - rvest"></a>R - rvest</h3><p>第二版，因為發現R比較多人用rvest套件，所以我就決定來試試看。<br>優點：rvest語法簡潔多了，程式碼可讀性提昇，寫起來也比較快。<br>缺點：同第一版。要安裝R的環境、無法打包執行檔、R的語法我不習慣。</p>
+<h3 id="Python-BeautifulSoup"><a href="#Python-BeautifulSoup" class="headerlink" title="Python - BeautifulSoup"></a>Python - BeautifulSoup</h3><p>優點：比用R簡潔更多，寫起來更快。<br>缺點：python的環境沒有R那麼好架，之前好幾度失敗。<br>現在能快速架起來可能是因為改用Ubuntu的關係（？）</p>
+<h2 id="爬蟲的第一步：觀察網頁特性"><a href="#爬蟲的第一步：觀察網頁特性" class="headerlink" title="爬蟲的第一步：觀察網頁特性"></a>爬蟲的第一步：觀察網頁特性</h2><blockquote>
+<p>資料來源：康是美官方網站<br><a href="https://www.cosmed.com.tw/Index.aspx" target="_blank" rel="noopener">Welcome to 康是美</a><br><a href="https://www.cosmed.com.tw/Contact/Shop.aspx" target="_blank" rel="noopener">門市查詢</a><br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx" target="_blank" rel="noopener">門市查詢-結果</a></p>
+</blockquote>
+<p>首先進入康是美門市查詢的頁面。<br>左邊的區塊有「縣市」、「行政區」、「店名」、「關鍵字」、「專櫃名」這些條件可以輸入。</p>
+<img src="/crawler-for-cosmed-store-list/Contact_Shop.png">
+<p>若不輸入任何條件，直接按下「門市查詢」的按鈕，就可以跑出全部門市的資料。<br>六間門市為一頁，下方有超連結可以切換頁面。</p>
+<p>網頁上所呈現的資訊有：「門市名稱」、「門市地址」、「門市電話」、「營業時間」。<br>其中「門市名稱」為超連結，超連結的內容是該門市的頁面，頁面中呈現更詳細的門市資訊。<br>而「營業時間」的內容包含換行字元。</p>
+<img src="/crawler-for-cosmed-store-list/Contact_Shop_list.png">
+<p>目前總共有67頁，這個是最後一頁的畫面。<br><img src="/crawler-for-cosmed-store-list/Contact_Shop_list_67.png"></p>
+<h3 id="觀察網址"><a href="#觀察網址" class="headerlink" title="觀察網址"></a>觀察網址</h3><p>再來觀察網址，<br>若由門市查詢不輸入任何條件，直接按下「門市查詢」：<br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop=" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop=</a><br>移除後面的參數，可簡化為：<br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?</a><br>若輸入簡化後的網址，也能帶出相同頁面。</p>
+<p>若切換到第二頁，可以看到網址列出現了頁面的參數(pg=2)<br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=2&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop=" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=2&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop=</a><br>可簡化為：<br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=2" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=2</a></p>
+<p>最後一頁：<br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=67&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop=" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=67&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop=</a><br>可簡化為：<br><a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=67" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=67</a></p>
+<h3 id="觀察網頁原始碼"><a href="#觀察網頁原始碼" class="headerlink" title="觀察網頁原始碼"></a>觀察網頁原始碼</h3><p>瀏覽器以滑鼠按右鍵，可以選「檢視網頁原始碼」，或是「檢視元素」，<br>可以看到網頁的原始碼，網頁主要是以html tag組成。</p>
+<p>而我們所需要的門市資訊，被包在 class 為 outletsList 的 div 裡面。<br>div 裡面包了 table，table 底下有 tr、td。<br>td 的 class 分別為 TableTitile_OrangeredNo 及 TableItem_OrangeredNo。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"outletsList"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">table</span> <span class="attr">width</span>=<span class="string">"100%"</span> <span class="attr">border</span>=<span class="string">"0"</span> <span class="attr">cellspacing</span>=<span class="string">"0"</span> <span class="attr">cellpadding</span>=<span class="string">"0"</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableTitile_OrangeredNo"</span>&gt;</span>門市名稱<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableItem_OrangeredNo"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"Shop_intro.aspx?ID=521"</span>&gt;</span>義聯門市<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableTitile_OrangeredNo"</span>&gt;</span>門市地址<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableItem_OrangeredNo"</span>&gt;</span>高雄市燕巢區義大路一段1號B1<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableTitile_OrangeredNo"</span>&gt;</span>門市電話<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableItem_OrangeredNo"</span>&gt;</span>07-6154503<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;<span class="name">tr</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableTitile_OrangeredNo"</span>&gt;</span>營業時間<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">           <span class="tag">&lt;<span class="name">td</span> <span class="attr">class</span>=<span class="string">"TableItem_OrangeredNo"</span>&gt;</span>平日:08:00-22:00<span class="tag">&lt;<span class="name">br</span>&gt;</span>假日:08:00-22:00<span class="tag">&lt;/<span class="name">td</span>&gt;</span></span><br><span class="line">       <span class="tag">&lt;/<span class="name">tr</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>再來是如何得知總共有多少頁呢？<br>在網址列輸入 <a href="https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=999" target="_blank" rel="noopener">https://www.cosmed.com.tw/Contact/Shop_list.aspx?pg=999</a><br>可以看到： 「上一頁 58 59 60 61 62 63 64 65 66 67 下一頁」<br>得知最後一頁是「67」<br><img src="/crawler-for-cosmed-store-list/Contact_Shop_list_last.png"></p>
+<p>以html原始碼來說，先找到 class 為 btn-digitALL 的 div，<br>再找到最後一個 class 為 btn-digit 的 div，就可以知道最後一頁=67&gt;<br>(為方便閱讀，我有斷行排版)<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digitALL"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit-left"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"ctl00_BaseContentPlaceHolder_DataPagerControl1_hlPrevious"</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=998&amp;amp;City=&amp;amp;District=&amp;amp;ID=&amp;amp;KeyWord=&amp;amp;Shop="</span>&gt;</span>上一頁<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=58&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>58<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=59&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>59<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=60&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>60<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=61&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>61<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=62&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>62<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=63&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>63<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=64&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>64<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=65&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>65<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=66&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>66<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=67&amp;City=&amp;District=&amp;ID=&amp;KeyWord=&amp;Shop="</span>&gt;</span>67<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"btn-digit-right"</span>&gt;</span><span class="tag">&lt;<span class="name">a</span> <span class="attr">id</span>=<span class="string">"ctl00_BaseContentPlaceHolder_DataPagerControl1_hlNext"</span> <span class="attr">href</span>=<span class="string">"/Contact/Shop_list.aspx?pg=67&amp;amp;City=&amp;amp;District=&amp;amp;ID=&amp;amp;KeyWord=&amp;amp;Shop="</span>&gt;</span>下一頁<span class="tag">&lt;/<span class="name">a</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>透過對網頁元素的觀察，我們才能找出規律，以程式碼來解析網頁html的資訊。</p>
+<h2 id="程式碼"><a href="#程式碼" class="headerlink" title="程式碼"></a>程式碼</h2><p>本來想寫一段說明我的程式的，但寫了一些覺得有點冗長，<br>所以，請先直接看我的Github囉。</p>
+<blockquote>
+<p>Github repositories:</p>
+<ul>
+<li>R - rvest版本：<br><a href="https://github.com/olycats/cosmed-store-list-r" target="_blank" rel="noopener">olycats/cosmed-store-list-r: crawler for COSMED store information via rvest</a></li>
+<li>Python - BeautifulSoup版本：<br><a href="https://github.com/olycats/cosmed-store-list-py" target="_blank" rel="noopener">olycats/cosmed-store-list-py: crawler for COSMED store information via Python BeautifulSoup</a></li>
+<li>另外我也把屈臣氏的門市列表拿來做練習：<br><a href="https://github.com/olycats/watsons-tw-store-finder" target="_blank" rel="noopener">olycats/watsons-tw-store-finder: crawler for Watsons Taiwan store information via Python BeautifulSoup</a></li>
+</ul>
+</blockquote>
+<p>覺得比較麻煩的就是「營業時間」這個欄位，必須要轉換斷行符號。<br>屈臣氏的營業時間也是一樣，除了要轉換斷行符號，還要把多餘的空白移除。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/work-at-mos/" rel="next" title="在摩斯漢堡打工的日子">
+                <i class="fa fa-chevron-left"></i> 在摩斯漢堡打工的日子
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/welcome/" rel="prev" title="pinned post">
+                pinned post <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">olycats</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/olycats" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/olycats" target="_blank" title="LinkedIn">
+                    
+                      <i class="fa fa-fw fa-linkedin"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:olycats@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#歷程"><span class="nav-text">歷程</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#VBA"><span class="nav-text">VBA</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-xml2"><span class="nav-text">R - xml2</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#R-rvest"><span class="nav-text">R - rvest</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Python-BeautifulSoup"><span class="nav-text">Python - BeautifulSoup</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#爬蟲的第一步：觀察網頁特性"><span class="nav-text">爬蟲的第一步：觀察網頁特性</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#觀察網址"><span class="nav-text">觀察網址</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#觀察網頁原始碼"><span class="nav-text">觀察網頁原始碼</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程式碼"><span class="nav-text">程式碼</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">olycats</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

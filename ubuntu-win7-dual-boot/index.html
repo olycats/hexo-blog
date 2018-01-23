@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="前一篇剛安裝完成Ubuntu，並完成基本設定。完成後想重開機，重新登入windows，發現在windows的時間怎麼差了八小時！！ 另外一開始只是抱著嘗試的心態在安裝Ubuntu，後來想先移除，還原成只有win7單一作業系統，才發現忘了先研究還原的方法，亂按一通結果差點開不了機XD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ubuntu&#x2F;Windows7雙系統">
+<meta property="og:url" content="http://yoursite.com/ubuntu-win7-dual-boot/index.html">
+<meta property="og:site_name" content="olycats&#39; blog">
+<meta property="og:description" content="前一篇剛安裝完成Ubuntu，並完成基本設定。完成後想重開機，重新登入windows，發現在windows的時間怎麼差了八小時！！ 另外一開始只是抱著嘗試的心態在安裝Ubuntu，後來想先移除，還原成只有win7單一作業系統，才發現忘了先研究還原的方法，亂按一通結果差點開不了機XD">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-01-08T16:58:29.688Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ubuntu&#x2F;Windows7雙系統">
+<meta name="twitter:description" content="前一篇剛安裝完成Ubuntu，並完成基本設定。完成後想重開機，重新登入windows，發現在windows的時間怎麼差了八小時！！ 另外一開始只是抱著嘗試的心態在安裝Ubuntu，後來想先移除，還原成只有win7單一作業系統，才發現忘了先研究還原的方法，亂按一通結果差點開不了機XD">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/ubuntu-win7-dual-boot/"/>
+
+
+
+
+
+  <title>Ubuntu/Windows7雙系統 | olycats' blog</title>
+  
+
+
+
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+          m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-110628235-1', 'auto');
+  ga('send', 'pageview');
+</script>
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">olycats' blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/ubuntu-win7-dual-boot/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="olycats">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="olycats' blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Ubuntu/Windows7雙系統</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-11-21T20:24:07+08:00">
+                2017-11-21
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2018-01-09T00:58:29+08:00">
+                2018-01-09
+              </time>
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/筆記/" itemprop="url" rel="index">
+                    <span itemprop="name">筆記</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前一篇剛安裝完成Ubuntu，並完成基本設定。<br>完成後想重開機，重新登入windows，發現在windows的時間怎麼差了八小時！！</p>
+<p>另外一開始只是抱著嘗試的心態在安裝Ubuntu，<br>後來想先移除，還原成只有win7單一作業系統，<br>才發現忘了先研究還原的方法，亂按一通結果差點開不了機XD<br><a id="more"></a></p>
+<h2 id="系統日期、時間確認"><a href="#系統日期、時間確認" class="headerlink" title="系統日期、時間確認"></a>系統日期、時間確認</h2><p>安裝完Ubuntu後重新登入Windows，<br>發現windows系統日期時間，與實際時間差了八個小時。</p>
+<p>這是因為每次在開機時，會透過BIOS讀取硬體時鐘，作為作業系統的系統時間。<br>Ubuntu預設讀取/寫入硬體時鐘的是UTC時間而Windows預設讀取/寫入硬體時鐘的是Local Time。<br>不同作業系統對於硬體時鐘的認定不同，造成在同一台電腦安裝兩個作業系統，會發生系統時間的衝突。</p>
+<p>解決方法是在Ubuntu執行指令<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">timedatectl set-local-rtc 1</span><br></pre></td></tr></table></figure></p>
+<p>將Ubuntu調整為使用Local Time。</p>
+<p>完成後即可重新登入windows，驗證系統日期時間正確性。</p>
+<blockquote>
+<p>參考：<a href="https://askubuntu.com/questions/169376/clock-time-is-off-on-dual-boot" target="_blank" rel="noopener">windows - Clock time is off on dual boot - Ask Ubuntu</a></p>
+<p>以下引用自：<a href="https://help.ubuntu.com/community/UbuntuTime#Multiple_Boot_Systems_Time_Conflicts" target="_blank" rel="noopener">UbuntuTime - Community Help Wiki - Official Ubuntu Documentation</a><br>Multiple Boot Systems Time Conflicts<br>Operating systems store and<br> retrieve the time in the hardware clock located on your motherboard so<br>that it can keep track of the time even when the system does not have<br>power. Most operating systems (Linux/Unix/Mac) store the time on the<br>hardware clock as UTC<br> by default, though some systems (notably Microsoft Windows) store the<br>time on the hardware clock as the ‘local’ time. This causes problems in a<br> dual boot system if both systems view the hardware clock differently.</p>
+</blockquote>
+<h2 id="移除Ubuntu的方法"><a href="#移除Ubuntu的方法" class="headerlink" title="移除Ubuntu的方法"></a>移除Ubuntu的方法</h2><h3 id="1-錯誤的作法，請不要學我！！"><a href="#1-錯誤的作法，請不要學我！！" class="headerlink" title="1. 錯誤的作法，請不要學我！！"></a>1. 錯誤的作法，請不要學我！！</h3><p>在Windows的磁碟管理，可以看到我之前切的C槽、D槽，<br>再後面有兩個磁區，被分配給Ubuntu使用。</p>
+<p>我把那兩個分配給Ubuntu的磁區，點選「刪除磁區」，<br>傻傻的以為，這樣就能把Ubuntu刪除，復原到之前的樣子。</p>
+<p>然後再重開機的時候，才發現我做錯了…</p>
+<p>開機時仍然是預設進入GNU GRUB的開機選單，<br>也就是安裝完Ubuntu後，開機時都會出現，可以選擇要進入Ubuntu或windows的那個畫面。<br>但是因為之前安裝Ubuntu的磁區已經被刪掉，無法正常進入GNU GRUB。</p>
+<p>總之就是造成一個Ubuntu已經被移除、但卻無法進入windows的窘境。</p>
+<p>我的解決辦法是拿出之前安裝Ubuntu的USB隨身碟，<br>先把Ubuntu重新安裝，再重頭來過。</p>
+<h3 id="2-正確的作法"><a href="#2-正確的作法" class="headerlink" title="2. 正確的作法"></a>2. 正確的作法</h3><h4 id="使用EasyBCD調整MBR"><a href="#使用EasyBCD調整MBR" class="headerlink" title="使用EasyBCD調整MBR"></a>使用EasyBCD調整MBR</h4><p>正確的作法必須調整MBR，這樣下一次開機時，<br>就可以還原到安裝Ubuntu之前，開機直接進入Windows作業系統。</p>
+<p>(1) 下載、開啟工具「EasyBCD」<br>(2) BCD部屬-&gt;安裝 Windows Vista/7 Bootloader 到 MBR-&gt;寫入MBR。<br>(3) 編輯開機選單-&gt;略過開機選單-&gt;儲存設定。</p>
+<h4 id="刪除Ubuntu所在的磁區"><a href="#刪除Ubuntu所在的磁區" class="headerlink" title="刪除Ubuntu所在的磁區"></a>刪除Ubuntu所在的磁區</h4><p>調整MBR後，建議先重開機，確認開機後是直接進入Windows作業系統。<br>確認無誤後，再將Ubuntu所在的磁區刪除。</p>
+<blockquote>
+<p>參考：<a href="http://bruce30262.pixnet.net/blog/post/105625688" target="_blank" rel="noopener">[知識] 如何從 Win7/Linux 雙系統中安全移除Linux作業系統</a><br>下載EasyBCD：<a href="http://neosmart.net/EasyBCD/" target="_blank" rel="noopener">EasyBCD - NeoSmart Technologies</a></p>
+</blockquote>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/unbuntu-installation/" rel="next" title="Ubuntu安裝、基本設定">
+                <i class="fa fa-chevron-left"></i> Ubuntu安裝、基本設定
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/ubuntu-hotspot/" rel="prev" title="Ubuntu設定hotspot">
+                Ubuntu設定hotspot <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">olycats</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">21</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/olycats" target="_blank" title="GitHub">
+                    
+                      <i class="fa fa-fw fa-github"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="https://www.linkedin.com/in/olycats" target="_blank" title="LinkedIn">
+                    
+                      <i class="fa fa-fw fa-linkedin"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:olycats@gmail.com" target="_blank" title="E-Mail">
+                    
+                      <i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#系統日期、時間確認"><span class="nav-text">系統日期、時間確認</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#移除Ubuntu的方法"><span class="nav-text">移除Ubuntu的方法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-錯誤的作法，請不要學我！！"><span class="nav-text">1. 錯誤的作法，請不要學我！！</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-正確的作法"><span class="nav-text">2. 正確的作法</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#使用EasyBCD調整MBR"><span class="nav-text">使用EasyBCD調整MBR</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#刪除Ubuntu所在的磁區"><span class="nav-text">刪除Ubuntu所在的磁區</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">olycats</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.3"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
